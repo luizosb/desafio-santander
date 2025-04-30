@@ -3,7 +3,7 @@ package br.com.santander.desafio_santander.model;
 import br.com.santander.desafio_santander.DTO.EnderecoDTO;
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "enderecos")
@@ -21,18 +21,10 @@ public class Endereco {
     private String uf;
     private String estado;
     private String regiao;
-    private LocalDate data;
 
-    public Endereco(EnderecoDTO enderecoDTO) {
-        this.cep = enderecoDTO.cep();
-        this.logradouro = enderecoDTO.logradouro();
-        this.complemento = enderecoDTO.complemento();
-        this.unidade = enderecoDTO.unidade();
-        this.bairro = enderecoDTO.bairro();
-        this.uf = enderecoDTO.uf();
-        this.estado = enderecoDTO.estado();
-        this.regiao = enderecoDTO.regiao();
-    }
+    private LocalDateTime data;
+
+    private String logBusca;
 
     public Endereco() {
     }
@@ -101,12 +93,20 @@ public class Endereco {
         this.regiao = regiao;
     }
 
-    public LocalDate getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
+    }
+
+    public String getLogBusca() {
+        return logBusca;
+    }
+
+    public void setLogBusca(String logBusca) {
+        this.logBusca = logBusca;
     }
 
     @Override

@@ -1,8 +1,12 @@
 package br.com.santander.desafio_santander.controller;
 
 import br.com.santander.desafio_santander.DTO.EnderecoDTO;
+import br.com.santander.desafio_santander.erros.RespostaErro;
 import br.com.santander.desafio_santander.service.EnderecoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +23,12 @@ public class EnderecoController {
     }
 
     @GetMapping("/{cep}")
-    public ResponseEntity<EnderecoDTO> buscarCep(@PathVariable String cep) {
-        EnderecoDTO enderecoDTO = enderecoService.buscarCep(cep);
+    public ResponseEntity<?> buscarCep(@PathVariable String cep) {
+        EnderecoDTO enderecoDTO = enderecoService.buscarCep(cep.replace("-", ""));
 
         if (enderecoDTO == null) {
-            return ResponseEntity.notFound().build();
+            RespostaErro erro = new RespostaErro("CEP não encontrado na API", 404);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
         }
 
         return ResponseEntity.ok(enderecoDTO);
