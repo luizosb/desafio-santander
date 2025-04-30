@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class Endereco {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String cep;
@@ -32,7 +32,6 @@ public class Endereco {
         this.uf = enderecoDTO.uf();
         this.estado = enderecoDTO.estado();
         this.regiao = enderecoDTO.regiao();
-        this.data = LocalDate.now();
     }
 
     public Endereco() {
@@ -100,6 +99,14 @@ public class Endereco {
 
     public void setRegiao(String regiao) {
         this.regiao = regiao;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
     @Override
