@@ -6,7 +6,7 @@ o PostgreeSQL), seguindo os princípios do SOLID.
 
 # Arquitetura do Projeto
 
-![Diagrama da Solucao](docs\estruturaProjeto.png "Projeto")
+![Diagrama da Solucao](docs/estruturaProjeto.png "Projeto")
 
 ## Como executar
 ./mvnw spring-boot:run
