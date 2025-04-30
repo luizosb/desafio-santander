@@ -1,10 +1,13 @@
-package br.com.santander.desafio_santander.viacep;
+package br.com.santander.desafio_santander.mockoon;
 
 import br.com.santander.desafio_santander.DTO.EnderecoDTO;
-import br.com.santander.desafio_santander.mockoon.EnderecoPesquisaInterface;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+/**
+ * Componente para buscar informações na API online ViaCEP
+ */
 
 @Component
 @Profile("prod")

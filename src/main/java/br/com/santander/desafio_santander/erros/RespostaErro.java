@@ -2,6 +2,9 @@ package br.com.santander.desafio_santander.erros;
 
 import java.time.LocalDateTime;
 
+/**
+ * Classe para criar uma mensagem de erro mais legivel ao cliente ao usar Postman
+ */
 public class RespostaErro {
 
     private String mensagem;

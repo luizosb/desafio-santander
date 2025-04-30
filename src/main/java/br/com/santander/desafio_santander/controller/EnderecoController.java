@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller lida exclusivamente com a interação via API, responsável apenas por lidar com a comunicação com o cliente.
+ */
+
 @RestController
 @RequestMapping("/api")
 public class EnderecoController {
@@ -24,10 +28,11 @@ public class EnderecoController {
 
     @GetMapping("/{cep}")
     public ResponseEntity<?> buscarCep(@PathVariable String cep) {
-        EnderecoDTO enderecoDTO = enderecoService.buscarCep(cep.replace("-", ""));
+        EnderecoDTO enderecoDTO = enderecoService.buscarCep(cep.replace("-", "").trim());
 
         if (enderecoDTO == null) {
             RespostaErro erro = new RespostaErro("CEP não encontrado na API", 404);
+
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
         }
 

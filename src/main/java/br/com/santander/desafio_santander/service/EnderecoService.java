@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+
+/**
+ * Service que contém a lógica de negócios.
+ */
 @Service
 public class EnderecoService {
 

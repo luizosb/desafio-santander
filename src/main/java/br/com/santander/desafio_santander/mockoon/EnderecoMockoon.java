@@ -5,6 +5,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+
+/**
+ * Componente para buscar informações na API mockada
+ */
 @Component
 @Profile("dev")
 public class EnderecoMockoon implements EnderecoPesquisaInterface {

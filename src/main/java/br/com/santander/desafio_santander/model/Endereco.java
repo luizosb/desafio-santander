@@ -1,10 +1,12 @@
 package br.com.santander.desafio_santander.model;
 
-import br.com.santander.desafio_santander.DTO.EnderecoDTO;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+/**
+ * Representa a estrutura que será persistida no banco.
+ */
 @Entity
 @Table(name = "enderecos")
 public class Endereco {
