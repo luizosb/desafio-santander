@@ -1,4 +1,6 @@
-package br.com.santander.desafio_santander.domain.entities;
+package br.com.santander.desafio_santander.domain.factories;
+
+import br.com.santander.desafio_santander.domain.entities.Endereco;
 
 import java.time.LocalDateTime;
 

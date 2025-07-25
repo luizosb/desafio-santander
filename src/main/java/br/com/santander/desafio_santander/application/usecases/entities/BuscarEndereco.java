@@ -1,37 +1,31 @@
-package br.com.santander.desafio_santander.arquitetura_antiga.service;
+package br.com.santander.desafio_santander.application.usecases.entities;
 
-import br.com.santander.desafio_santander.arquitetura_antiga.DTO.EnderecoDTO;
 import br.com.santander.desafio_santander.domain.entities.Endereco;
-import br.com.santander.desafio_santander.arquitetura_antiga.mockoon.EnderecoPesquisaInterface;
-import br.com.santander.desafio_santander.arquitetura_antiga.repository.EnderecoRepository;
-import org.springframework.stereotype.Service;
+import br.com.santander.desafio_santander.domain.ports.out.EnderecoPesquisa;
+import br.com.santander.desafio_santander.domain.ports.out.RepositorioDeEndereco;
+import br.com.santander.desafio_santander.infra.controller.EnderecoDTO;
 
 import java.time.LocalDateTime;
 
-
-/**
- * Service que contém a lógica de negócios.
- */
-@Service
-public class EnderecoService {
+public class BuscarEndereco {
 
 
-    private final EnderecoRepository enderecoRepository;
-    private final EnderecoPesquisaInterface enderecoPesquisaInterface;
+    private final RepositorioDeEndereco enderecoRepository;
+    private final EnderecoPesquisa enderecoPesquisa;
 
-    public EnderecoService(EnderecoPesquisaInterface enderecoPesquisaInterface, EnderecoRepository enderecoRepository) {
-        this.enderecoPesquisaInterface = enderecoPesquisaInterface;
+    public BuscarEndereco(EnderecoPesquisa enderecoPesquisa, RepositorioDeEndereco enderecoRepository) {
+        this.enderecoPesquisa = enderecoPesquisa;
         this.enderecoRepository = enderecoRepository;
     }
 
-    public EnderecoDTO buscarCep(String cep) {
+    public EnderecoDTO buscar(String cep) {
 
         Endereco endereco = new Endereco();
         endereco.setCep(cep);
         endereco.setData(LocalDateTime.now());
 
         try {
-            EnderecoDTO enderecoDTO = enderecoPesquisaInterface.buscarPorCep(cep);
+            EnderecoDTO enderecoDTO = enderecoPesquisa.buscar(cep);
 
             if (enderecoDTO != null) {
 
@@ -43,18 +37,18 @@ public class EnderecoService {
                 endereco.setUf(enderecoDTO.uf());
                 endereco.setUnidade(enderecoDTO.unidade());
                 endereco.setLogBusca("202 OK CEP");
-                enderecoRepository.save(endereco);
+                enderecoRepository.salvar(endereco);
                 return enderecoDTO;
             } else {
                 endereco.setLogBusca("404 NOT FOUND - CEP não encontrado");
-                enderecoRepository.save(endereco);
+                enderecoRepository.salvar(endereco);
                 return null;
             }
 
 
         } catch (Exception exception) {
             endereco.setLogBusca("404 NOT FOUND - CEP não encontrado");
-            enderecoRepository.save(endereco);
+            enderecoRepository.salvar(endereco);
             return null;
         }
 

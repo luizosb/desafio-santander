@@ -1,12 +1,9 @@
-package br.com.santander.desafio_santander.arquitetura_antiga.controller;
+package br.com.santander.desafio_santander.infra.controller;
 
-import br.com.santander.desafio_santander.arquitetura_antiga.DTO.EnderecoDTO;
-import br.com.santander.desafio_santander.arquitetura_antiga.erros.RespostaErro;
-import br.com.santander.desafio_santander.arquitetura_antiga.service.EnderecoService;
+import br.com.santander.desafio_santander.application.usecases.entities.BuscarEndereco;
+import br.com.santander.desafio_santander.infra.erros.RespostaErro;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,22 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class EnderecoController {
 
-    private final EnderecoService enderecoService;
+    private final BuscarEndereco buscarEndereco;
 
-    public EnderecoController(EnderecoService enderecoService) {
-        this.enderecoService = enderecoService;
+    public EnderecoController(BuscarEndereco buscarEndereco) {
+        this.buscarEndereco = buscarEndereco;
     }
 
     @GetMapping("/{cep}")
     public ResponseEntity<?> buscarCep(@PathVariable String cep) {
-        EnderecoDTO enderecoDTO = enderecoService.buscarCep(cep.replace("-", "").trim());
+        EnderecoDTO dto = buscarEndereco.buscar(cep.replace("-", "").trim());
 
-        if (enderecoDTO == null) {
+        if (dto == null) {
             RespostaErro erro = new RespostaErro("CEP não encontrado na API", 404);
 
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
         }
 
-        return ResponseEntity.ok(enderecoDTO);
+        return ResponseEntity.ok(dto);
     }
 }

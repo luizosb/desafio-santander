@@ -1,8 +1,8 @@
-package br.com.santander.desafio_santander.application.gateways;
+package br.com.santander.desafio_santander.domain.ports.out;
 
 import br.com.santander.desafio_santander.domain.entities.Endereco;
 
 public interface RepositorioDeEndereco {
 
-    Endereco buscarEndereco (String cep);
+    Endereco salvar (Endereco endereco);
 }

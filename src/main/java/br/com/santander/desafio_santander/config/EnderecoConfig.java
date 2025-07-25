@@ -1,7 +1,11 @@
 package br.com.santander.desafio_santander.config;
 
-import br.com.santander.desafio_santander.application.gateways.RepositorioDeEndereco;
-import br.com.santander.desafio_santander.application.usecases.BuscarEndereco;
+import br.com.santander.desafio_santander.application.usecases.entities.BuscarEndereco;
+import br.com.santander.desafio_santander.domain.ports.out.EnderecoPesquisa;
+import br.com.santander.desafio_santander.domain.ports.out.RepositorioDeEndereco;
+import br.com.santander.desafio_santander.infra.gateways.EnderecoEntityMapper;
+import br.com.santander.desafio_santander.infra.gateways.RepositorioDeEnderecoJpa;
+import br.com.santander.desafio_santander.infra.persistance.EnderecoRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,8 +13,18 @@ import org.springframework.context.annotation.Configuration;
 public class EnderecoConfig {
 
     @Bean
-    BuscarEndereco buscarEndereco(RepositorioDeEndereco repositorioDeEndereco){
-        return new BuscarEndereco(repositorioDeEndereco);
+    BuscarEndereco buscarEndereco(EnderecoPesquisa enderecoPesquisa, RepositorioDeEndereco repositorioDeEndereco){
+        return new BuscarEndereco(enderecoPesquisa, repositorioDeEndereco);
+    }
+
+    @Bean
+    RepositorioDeEnderecoJpa criarRepositorioJpa(EnderecoRepository repositorio, EnderecoEntityMapper mapper){
+        return new RepositorioDeEnderecoJpa(repositorio, mapper);
+    }
+
+    @Bean
+    EnderecoEntityMapper retornaMapper(){
+        return new EnderecoEntityMapper();
     }
 
 
