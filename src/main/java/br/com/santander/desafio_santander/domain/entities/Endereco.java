@@ -1,22 +1,13 @@
-package br.com.santander.desafio_santander.arquitetura_antiga.model;
-
-import jakarta.persistence.*;
+package br.com.santander.desafio_santander.domain.entities;
 
 import java.time.LocalDateTime;
 
 /**
  * Representa a estrutura que será persistida no banco.
  */
-@Entity
-@Table(name = "enderecos")
 public class Endereco {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
     private String cep;
-
     private String logradouro;
     private String complemento;
     private String unidade;
@@ -28,6 +19,23 @@ public class Endereco {
     private LocalDateTime data;
 
     private String logBusca;
+
+    public Endereco(String cep, String logradouro, String complemento, String unidade, String bairro,
+                    String uf, String estado, String regiao, LocalDateTime data, String logBusca) {
+        if(cep == null || cep.matches("\\d{5}\\-\\d{3}")){
+            throw new IllegalArgumentException("CEP não está no padrão correto para a pesquisa.");
+        }
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.complemento = complemento;
+        this.unidade = unidade;
+        this.bairro = bairro;
+        this.uf = uf;
+        this.estado = estado;
+        this.regiao = regiao;
+        this.data = data;
+        this.logBusca = logBusca;
+    }
 
     public Endereco() {
     }

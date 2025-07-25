@@ -1,7 +1,7 @@
 package br.com.santander.desafio_santander.application.usecases;
 
 import br.com.santander.desafio_santander.application.gateways.RepositorioDeEndereco;
-import br.com.santander.desafio_santander.arquitetura_antiga.model.Endereco;
+import br.com.santander.desafio_santander.domain.entities.Endereco;
 
 public class BuscarEndereco {
 

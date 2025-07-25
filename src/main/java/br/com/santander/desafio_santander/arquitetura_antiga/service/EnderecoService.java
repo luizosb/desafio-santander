@@ -1,7 +1,7 @@
 package br.com.santander.desafio_santander.arquitetura_antiga.service;
 
 import br.com.santander.desafio_santander.arquitetura_antiga.DTO.EnderecoDTO;
-import br.com.santander.desafio_santander.arquitetura_antiga.model.Endereco;
+import br.com.santander.desafio_santander.domain.entities.Endereco;
 import br.com.santander.desafio_santander.arquitetura_antiga.mockoon.EnderecoPesquisaInterface;
 import br.com.santander.desafio_santander.arquitetura_antiga.repository.EnderecoRepository;
 import org.springframework.stereotype.Service;
