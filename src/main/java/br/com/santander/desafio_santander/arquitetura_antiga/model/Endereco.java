@@ -1,4 +1,4 @@
-package br.com.santander.desafio_santander.model;
+package br.com.santander.desafio_santander.arquitetura_antiga.model;
 
 import jakarta.persistence.*;
 

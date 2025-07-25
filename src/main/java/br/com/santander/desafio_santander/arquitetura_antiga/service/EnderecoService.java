@@ -1,9 +1,9 @@
-package br.com.santander.desafio_santander.service;
+package br.com.santander.desafio_santander.arquitetura_antiga.service;
 
-import br.com.santander.desafio_santander.DTO.EnderecoDTO;
-import br.com.santander.desafio_santander.model.Endereco;
-import br.com.santander.desafio_santander.mockoon.EnderecoPesquisaInterface;
-import br.com.santander.desafio_santander.repository.EnderecoRepository;
+import br.com.santander.desafio_santander.arquitetura_antiga.DTO.EnderecoDTO;
+import br.com.santander.desafio_santander.arquitetura_antiga.model.Endereco;
+import br.com.santander.desafio_santander.arquitetura_antiga.mockoon.EnderecoPesquisaInterface;
+import br.com.santander.desafio_santander.arquitetura_antiga.repository.EnderecoRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

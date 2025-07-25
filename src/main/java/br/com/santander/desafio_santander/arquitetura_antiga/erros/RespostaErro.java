@@ -1,4 +1,4 @@
-package br.com.santander.desafio_santander.erros;
+package br.com.santander.desafio_santander.arquitetura_antiga.erros;
 
 import java.time.LocalDateTime;
 

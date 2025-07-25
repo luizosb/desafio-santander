@@ -1,4 +1,4 @@
-package br.com.santander.desafio_santander.DTO;
+package br.com.santander.desafio_santander.arquitetura_antiga.DTO;
 
 /**
  * DTO representa os dados que trafegam entre cliente e servidor

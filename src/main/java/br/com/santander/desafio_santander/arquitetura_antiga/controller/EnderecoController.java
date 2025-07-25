@@ -1,8 +1,8 @@
-package br.com.santander.desafio_santander.controller;
+package br.com.santander.desafio_santander.arquitetura_antiga.controller;
 
-import br.com.santander.desafio_santander.DTO.EnderecoDTO;
-import br.com.santander.desafio_santander.erros.RespostaErro;
-import br.com.santander.desafio_santander.service.EnderecoService;
+import br.com.santander.desafio_santander.arquitetura_antiga.DTO.EnderecoDTO;
+import br.com.santander.desafio_santander.arquitetura_antiga.erros.RespostaErro;
+import br.com.santander.desafio_santander.arquitetura_antiga.service.EnderecoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
